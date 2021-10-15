@@ -1,3 +1,6 @@
+// constanter
+const url = 'https://api.github.com';
+
 // hämta token.key filen
 async function readFile(file) {
   return fetch(file)
@@ -10,9 +13,6 @@ async function getToken() {
   return response;
 }
 
-// constanter
-const url = 'https://api.github.com';
-
 async function files(event) {
   const forkid = event.target.id;
   const main = document.querySelector('main');
@@ -20,11 +20,8 @@ async function files(event) {
 
   const path = await fetch(`${url}/repositories/${forkid}/contents`, { method: 'GET', headers: { Authorization: `token ${await getToken()}` } });
   const pathFetched = await path.json();
-  console.log(pathFetched);
   const file = JSON.stringify(pathFetched[1].download_url);
   const htmlLink = pathFetched[1].html_url;
-
-  console.log(file);
 
   const filecardtemplate = document.querySelector('#fork');
   const forkClone = filecardtemplate.content.cloneNode(true);
@@ -36,8 +33,6 @@ async function files(event) {
 
   main.appendChild(forkClone);
 }
-
-// eventlistener på input
 
 // api funktionen på eventlistener
 function api(e) {
