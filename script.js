@@ -37,9 +37,6 @@ async function files(event) {
   main.appendChild(forkClone);
 }
 
-// eventlistener på input
-
-// api funktionen på eventlistener
 function api(e) {
   e.preventDefault();
   const searchInput = document.querySelector('#search').value;
